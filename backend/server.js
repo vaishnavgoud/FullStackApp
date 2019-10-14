@@ -31,6 +31,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
+app.get('*', (req, res) => {
+  res.sendFile('../client/public/index.html', { root: global });
+});
+
 // this is our get method
 // this method fetches all available data in our database
 router.get('/getData', (req, res) => {
