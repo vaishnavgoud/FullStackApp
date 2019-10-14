@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 app.use(logger('dev'));
 
 app.get('*', (req, res) => {
-  res.sendFile('../client/public/index.html', { root: global });
+  res.sendFile('../client/build/index.html', { root: global });
 });
 
 // this is our get method
