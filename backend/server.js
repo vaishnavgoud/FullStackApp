@@ -6,7 +6,7 @@ const logger = require('morgan');
 const Data = require('./data');
 const path = require('path');
 
-const API_PORT = process.env.PORT;
+const API_PORT = Number(process.env.PORT|| 8888);
 const app = express();
 app.use(cors());
 const router = express.Router();
