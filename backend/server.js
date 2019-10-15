@@ -4,8 +4,9 @@ var cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const Data = require('./data');
+const path = require('path');
 
-const API_PORT = process.env.PORT || 3001;
+const API_PORT = process.env.PORT || 8080;
 const app = express();
 app.use(cors());
 const router = express.Router();
@@ -31,8 +32,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
-app.get('*', (req, res) => {
-  res.sendFile('../client/build/index.html', { root: global });
+app.use(express.static('../client/build'));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve('../client/build/index.html'));
 });
 
 // this is our get method
